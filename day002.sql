@@ -1,43 +1,43 @@
--- Çü(data type)º¯È¯ ÇÔ¼ö: ¼ýÀÚ, ¹®Â¥, ³¯Â¥ µ¥ÀÌÅÍÇüÀ» ´Ù¸¥ µ¥ÀÌÅÍ ÇüÀ¸·Î º¯È¯ÇÏ´Â ÇÔ¼ö
--- Á¾·ù: to_number, to_char, to_date
+-- í˜•(data type)ë³€í™˜ í•¨ìˆ˜: ìˆ«ìž, ë¬¸ì§œ, ë‚ ì§œ ë°ì´í„°í˜•ì„ ë‹¤ë¥¸ ë°ì´í„° í˜•ìœ¼ë¡œ ë³€í™˜í•˜ëŠ” í•¨ìˆ˜
+-- ì¢…ë¥˜: to_number, to_char, to_date
 -- number - character - date
 
--- to_char: ³¯Â¥Çü ¶Ç´Â ¼ýÀÚÇüÀ» ¹®ÀÚÇüÀ¸·Î º¯È¯ÇÏ´Â ÇÔ¼ö
+-- to_char: ë‚ ì§œí˜• ë˜ëŠ” ìˆ«ìží˜•ì„ ë¬¸ìží˜•ìœ¼ë¡œ ë³€í™˜í•˜ëŠ” í•¨ìˆ˜
 select sysdate from dual;
 
--- format(¼­½Ä): yy/yyyy , mm, dd
-select sysdate, to_char(sysdate, 'yyyy-mm-dd') "¿À´Ã ³¯Â¥"
+-- format(ì„œì‹): yy/yyyy , mm, dd
+select sysdate, to_char(sysdate, 'yyyy-mm-dd') "ì˜¤ëŠ˜ ë‚ ì§œ"
 from dual;
 
--- »ç¿øµéÀÇ ÀÔ»çÀÏÀ» Ãâ·ÂÇÏµÇ, ¿äÀÏÀ» ÇÔ²² Ãâ·ÂÇÏ´Â Äõ¸®¹®À» ±â¼úÇÏ½Ã¿À.
--- day: ¿äÀÏ
+-- ì‚¬ì›ë“¤ì˜ ìž…ì‚¬ì¼ì„ ì¶œë ¥í•˜ë˜, ìš”ì¼ì„ í•¨ê»˜ ì¶œë ¥í•˜ëŠ” ì¿¼ë¦¬ë¬¸ì„ ê¸°ìˆ í•˜ì‹œì˜¤.
+-- day: ìš”ì¼
 select hiredate, to_char(hiredate, 'yyyy-mm-dd day'), to_char(hiredate, 'day')
 from emp;
 
--- ÇöÀç ½Ã½ºÅÛÀÇ ³¯Â¥¿Í ½Ã°£À» Ãâ·ÂÇÏ´Â Äõ¸®¹®À» ±â¼úÇÏ½Ã¿À.
--- ÀÚ¹Ù´Â ºÐÀ» ¿ù°ú ´ë¹®ÀÚ·Î ±¸ºÐ
+-- í˜„ìž¬ ì‹œìŠ¤í…œì˜ ë‚ ì§œì™€ ì‹œê°„ì„ ì¶œë ¥í•˜ëŠ” ì¿¼ë¦¬ë¬¸ì„ ê¸°ìˆ í•˜ì‹œì˜¤.
+-- ìžë°”ëŠ” ë¶„ì„ ì›”ê³¼ ëŒ€ë¬¸ìžë¡œ êµ¬ë¶„
 select to_char(sysdate, 'yyyy-mm-dd hh24:mi:ss')
 from dual;
 
--- L: °¢ Áö¿ªº° ÅëÈ­ ±âÈ£°¡ ºÙ´Â´Ù.)
--- ¼ýÀÚ ´ë½Å »ç¿ëµÇ´Â ±âÈ£: 0°ú 9
--- µ¥ÀÌÅÍÀÇ °ªÀÌ 10 => ¼­½Ä±âÈ£ 00Á¡ or 99Á¡
--- µ¥ÀÌÅÍÀÇ °ªÀÌ 8 => ¼­½Ä±âÈ£ 00Á¡: 08Á¡, or 99Á¡: 8Á¡
--- 1000À» ¼¼ÀÚ¸® ¸¶´Ù ,¸¦ Âï°í ½ÍÀ» ¶§ => 0,000¿ø: 1,000¿ø
--- 800À» ¼¼ÀÚ¸® ¸¶´Ù ,¸¦ Âï°í ½ÍÀ» ¶§ => 0,000¿ø: 0,800¿øÀ¸·Î ¶ä
--- Áï ÀÚ¸´¼ö°¡ ¸ÂÁö ¾ÊÀ» °æ¿ì 0Àº 0À¸·Î Ã¤¿ì°í, 9´Â Ã¤¿ìÁö ¾Ê°í ºñ¿î´Ù.
+-- L: ê° ì§€ì—­ë³„ í†µí™” ê¸°í˜¸ê°€ ë¶™ëŠ”ë‹¤.)
+-- ìˆ«ìž ëŒ€ì‹  ì‚¬ìš©ë˜ëŠ” ê¸°í˜¸: 0ê³¼ 9
+-- ë°ì´í„°ì˜ ê°’ì´ 10 => ì„œì‹ê¸°í˜¸ 00ì  or 99ì 
+-- ë°ì´í„°ì˜ ê°’ì´ 8 => ì„œì‹ê¸°í˜¸ 00ì : 08ì , or 99ì : 8ì 
+-- 1000ì„ ì„¸ìžë¦¬ ë§ˆë‹¤ ,ë¥¼ ì°ê³  ì‹¶ì„ ë•Œ => 0,000ì›: 1,000ì›
+-- 800ì„ ì„¸ìžë¦¬ ë§ˆë‹¤ ,ë¥¼ ì°ê³  ì‹¶ì„ ë•Œ => 0,000ì›: 0,800ì›ìœ¼ë¡œ ëœ¸
+-- ì¦‰ ìžë¦¿ìˆ˜ê°€ ë§žì§€ ì•Šì„ ê²½ìš° 0ì€ 0ìœ¼ë¡œ ì±„ìš°ê³ , 9ëŠ” ì±„ìš°ì§€ ì•Šê³  ë¹„ìš´ë‹¤.
 select ename, sal, to_char(sal, '999,999L')
 from emp;
 
--- to_date: ¹®ÀÚÇüÀ» ³¯Â¥ÇüÀ¸·Î º¯È¯ÇÏ´Â ÇÔ¼ö
--- ±âº» ³¯Â¥ Çü½Ä: yy/mm/dd
--- ³¯Â¥·Î ¹Ù²Ü ¼ö ¾ø´Â µ¥ÀÌÅÍ´Â º¯È¯ ºÒ°¡´É
+-- to_date: ë¬¸ìží˜•ì„ ë‚ ì§œí˜•ìœ¼ë¡œ ë³€í™˜í•˜ëŠ” í•¨ìˆ˜
+-- ê¸°ë³¸ ë‚ ì§œ í˜•ì‹: yy/mm/dd
+-- ë‚ ì§œë¡œ ë°”ê¿€ ìˆ˜ ì—†ëŠ” ë°ì´í„°ëŠ” ë³€í™˜ ë¶ˆê°€ëŠ¥
 select ename, hiredate
 from emp
 where hiredate = to_date(19810220, 'yyyy/mm/dd');
 
--- to_number: ¹®ÀÚ³ª ³¯Â¥ Çü½ÄÀÇ µ¥ÀÌÅÍ¸¦ ¼ýÀÚÇüÀ¸·Î º¯È¯ÇÏ´Â ÇÔ¼ö
--- 20,000(ÀÌ·¸°Ô ½°Ç¥°¡ ºÙÀº°Ç ¼ýÀÚ°¡ ¾Æ´Ï¶ó ¹®ÀÚÀÓ)°ú 10,000 °ª »çÀÌÀÇ Â÷¸¦ ¾Ë¾Æº¸´Â Äõ¸®¹®
+-- to_number: ë¬¸ìžë‚˜ ë‚ ì§œ í˜•ì‹ì˜ ë°ì´í„°ë¥¼ ìˆ«ìží˜•ìœ¼ë¡œ ë³€í™˜í•˜ëŠ” í•¨ìˆ˜
+-- 20,000(ì´ë ‡ê²Œ ì‰¼í‘œê°€ ë¶™ì€ê±´ ìˆ«ìžê°€ ì•„ë‹ˆë¼ ë¬¸ìžìž„)ê³¼ 10,000 ê°’ ì‚¬ì´ì˜ ì°¨ë¥¼ ì•Œì•„ë³´ëŠ” ì¿¼ë¦¬ë¬¸
 select to_number('20,000', '99,999')
 from dual;
 
@@ -50,46 +50,46 @@ from dual;
 select to_char((to_number('20,000', '99,999') - to_number('10,000', '99,999')), '99,999')
 from dual;
 
--- NVLÇÔ¼ö: NULLÀ» ´Ù¸¥ °ªÀ¸·Î º¯È¯ÇÏ´Â ÇÔ¼ö
+-- NVLí•¨ìˆ˜: NULLì„ ë‹¤ë¥¸ ê°’ìœ¼ë¡œ ë³€í™˜í•˜ëŠ” í•¨ìˆ˜
 select *
 from emp;
 
--- Á÷¿øÀÇ ¿¬ºÀÀ» °è»êÇØ Ãâ·ÂÇÏ´Â Äõ¸®¹®À» ±â¼úÇÏ½Ã¿À.
--- ¿¬ºÀÀº Á÷¿øÀÇ ±Þ¿© * 12 + comm(»ó¿©±Ý)
-select ename, sal, sal * 12, sal * 12 + nvl(comm, 0) as ¿¬ºÀ
+-- ì§ì›ì˜ ì—°ë´‰ì„ ê³„ì‚°í•´ ì¶œë ¥í•˜ëŠ” ì¿¼ë¦¬ë¬¸ì„ ê¸°ìˆ í•˜ì‹œì˜¤.
+-- ì—°ë´‰ì€ ì§ì›ì˜ ê¸‰ì—¬ * 12 + comm(ìƒì—¬ê¸ˆ)
+select ename, sal, sal * 12, sal * 12 + nvl(comm, 0) as ì—°ë´‰
 from emp;
 
--- ±×·ìÇÔ¼ö(Group Function): ÇÏ³ª ÀÌ»óÀÇ ÇàÀ» ±×·ìÀ¸·Î ¹­¾î¼­ ¿¬»êÀ» ÇÏ´Â ÇÔ¼ö
--- sum: ÇØ´ç ÄÃ·³¿¡ ÃÑÇÕÀ» ±¸ÇÏ´Â ÇÔ¼ö
--- »ç¿øµéÀÇ ±Þ¿©ÀÇ ÃÑÇÕÀ» Ãâ·ÂÇÏ´Â Äõ¸®¹®À» ±â¼úÇÏ½Ã¿À.
--- select sal, sum(sal) from emp; ´Â ÇàÀÌ Â÷ÀÌ³ª¼­ ¿À·ù°¡ ³­´Ù.
+-- ê·¸ë£¹í•¨ìˆ˜(Group Function): í•˜ë‚˜ ì´ìƒì˜ í–‰ì„ ê·¸ë£¹ìœ¼ë¡œ ë¬¶ì–´ì„œ ì—°ì‚°ì„ í•˜ëŠ” í•¨ìˆ˜
+-- sum: í•´ë‹¹ ì»¬ëŸ¼ì— ì´í•©ì„ êµ¬í•˜ëŠ” í•¨ìˆ˜
+-- ì‚¬ì›ë“¤ì˜ ê¸‰ì—¬ì˜ ì´í•©ì„ ì¶œë ¥í•˜ëŠ” ì¿¼ë¦¬ë¬¸ì„ ê¸°ìˆ í•˜ì‹œì˜¤.
+-- select sal, sum(sal) from emp; ëŠ” í–‰ì´ ì°¨ì´ë‚˜ì„œ ì˜¤ë¥˜ê°€ ë‚œë‹¤.
 select sum(sal)
 from emp;
 
--- commÀÇ ÃÑÇÕÀ» ±¸ÇÏ½Ã¿À
--- ±×·ìÇÔ¼ö´Â ´Ù¸¥ ¿¬»êÀÚ¿Í ´Þ¸® ÇØ´ç ÄÃ·³°ªÀÌ NULLÀÎ °ÍÀº Á¦¿ÜÇÏ°í °è»êÇÑ´Ù.
+-- commì˜ ì´í•©ì„ êµ¬í•˜ì‹œì˜¤
+-- ê·¸ë£¹í•¨ìˆ˜ëŠ” ë‹¤ë¥¸ ì—°ì‚°ìžì™€ ë‹¬ë¦¬ í•´ë‹¹ ì»¬ëŸ¼ê°’ì´ NULLì¸ ê²ƒì€ ì œì™¸í•˜ê³  ê³„ì‚°í•œë‹¤.
 select sum(comm) from emp;
 
--- avg: ÇØ´ç ÄÃ·³ °ªÀÇ Æò±ÕÀ» ±¸ÇÏ´Â ÇÔ¼ö
--- Á÷¿ø ±Þ¿©ÀÇ Æò±ÕÀ» °è»êÇÏ´Â Äõ¸®¹®À» ±â¼úÇÏ½Ã¿À.
+-- avg: í•´ë‹¹ ì»¬ëŸ¼ ê°’ì˜ í‰ê· ì„ êµ¬í•˜ëŠ” í•¨ìˆ˜
+-- ì§ì› ê¸‰ì—¬ì˜ í‰ê· ì„ ê³„ì‚°í•˜ëŠ” ì¿¼ë¦¬ë¬¸ì„ ê¸°ìˆ í•˜ì‹œì˜¤.
 select round(avg(sal), 2) from emp;
 
--- max/min: ÃÖ´ñ°ª°ú ÃÖ¼Ú°ªÀ» ±¸ÇÏ´Â ÇÔ¼ö
--- °¡Àå ³ôÀº ±Þ¿©¿Í ³·Àº ±Þ¿©¸¦ ÃßÃâÇÏ´Â Äõ¸®¹®À» ±â¼úÇÏ½Ã¿À.
-select max(sal) "ÃÖ´ë±Þ¿©", min(sal) "ÃÖ¼Ò±Þ¿©", round(avg(sal), 2) "Æò±Õ±Þ¿©"
+-- max/min: ìµœëŒ“ê°’ê³¼ ìµœì†Ÿê°’ì„ êµ¬í•˜ëŠ” í•¨ìˆ˜
+-- ê°€ìž¥ ë†’ì€ ê¸‰ì—¬ì™€ ë‚®ì€ ê¸‰ì—¬ë¥¼ ì¶”ì¶œí•˜ëŠ” ì¿¼ë¦¬ë¬¸ì„ ê¸°ìˆ í•˜ì‹œì˜¤.
+select max(sal) "ìµœëŒ€ê¸‰ì—¬", min(sal) "ìµœì†Œê¸‰ì—¬", round(avg(sal), 2) "í‰ê· ê¸‰ì—¬"
 from emp;
 
-/* -- °¡Àå ³ôÀº ±Þ¿©¸¦ ¹Þ´Â Á÷¿øÀÇ ÀÌ¸§°ú ±Þ¿©¸¦ ÃßÃâÇÏ´Â Äõ¸®¹®À» ±â¼úÇÏ½Ã¿À.
+/* -- ê°€ìž¥ ë†’ì€ ê¸‰ì—¬ë¥¼ ë°›ëŠ” ì§ì›ì˜ ì´ë¦„ê³¼ ê¸‰ì—¬ë¥¼ ì¶”ì¶œí•˜ëŠ” ì¿¼ë¦¬ë¬¸ì„ ê¸°ìˆ í•˜ì‹œì˜¤.
 select ename, sal
 from emp
 where sal = max(sal);
-ÀÌ·¸°Ô ÇÏ¸é ¿À·ù ¹ß»ý
+ì´ë ‡ê²Œ í•˜ë©´ ì˜¤ë¥˜ ë°œìƒ
 */
 
--- count: Á¶°Ç¿¡ ¸¸Á·ÇÏ´Â ÇàÀÇ °³¼ö¸¦ º¯È¯ÇÏ´Â ÇÔ¼ö
--- count ÇÔ¼ö¿¡ Æ¯Á¤ ÄÃ·³À» ´ãÀ¸¸é ÇØ´ç ÄÃ·³¿¡ °ªÀ» ´ã°í ÀÖ´Â ÇàÀÇ °³¼ö¸¦ ¹ÝÈ¯
--- count ÇÔ¼ö´Â NULL °ª¿¡ ´ëÇÑ °³¼ö¸¦ ¼¼Áö ¾Ê´Â´Ù.
--- Á÷¿øÀÇ ¼ö¸¦ ÃßÃâÇÏ´Â Äõ¸®¹®À» ±â¼úÇÏ½Ã¿À.
+-- count: ì¡°ê±´ì— ë§Œì¡±í•˜ëŠ” í–‰ì˜ ê°œìˆ˜ë¥¼ ë³€í™˜í•˜ëŠ” í•¨ìˆ˜
+-- count í•¨ìˆ˜ì— íŠ¹ì • ì»¬ëŸ¼ì„ ë‹´ìœ¼ë©´ í•´ë‹¹ ì»¬ëŸ¼ì— ê°’ì„ ë‹´ê³  ìžˆëŠ” í–‰ì˜ ê°œìˆ˜ë¥¼ ë°˜í™˜
+-- count í•¨ìˆ˜ëŠ” NULL ê°’ì— ëŒ€í•œ ê°œìˆ˜ë¥¼ ì„¸ì§€ ì•ŠëŠ”ë‹¤.
+-- ì§ì›ì˜ ìˆ˜ë¥¼ ì¶”ì¶œí•˜ëŠ” ì¿¼ë¦¬ë¬¸ì„ ê¸°ìˆ í•˜ì‹œì˜¤.
 select count(*)
 from emp;
 
@@ -99,52 +99,52 @@ from emp;
 select count(comm)
 from emp;
 
--- Á÷¿øµéÀÌ ´ã´çÇÏ´Â ¾÷¹«ÀÇ °Ç¼ö¸¦ °è»êÇÏ¿© ÃßÃâÇÏ´Â Äõ¸®¹®À» ±â¼úÇÏ½Ã¿À.
+-- ì§ì›ë“¤ì´ ë‹´ë‹¹í•˜ëŠ” ì—…ë¬´ì˜ ê±´ìˆ˜ë¥¼ ê³„ì‚°í•˜ì—¬ ì¶”ì¶œí•˜ëŠ” ì¿¼ë¦¬ë¬¸ì„ ê¸°ìˆ í•˜ì‹œì˜¤.
 
 select count(distinct job)
 from emp;
 
--- group by Àý
--- Æ¯Á¤ Ä®·³À» ±âÁØÀ¸·Î ±×·ìÈ­ ÇÏ¿© ÇØ´ç ±×·ì¿¡ Á¸ÀçÇÏ´Â ·¹ÄÚµå¸¦ ´ë»óÇÏ´Â ¿¬»ê¼öÇà
--- ±×·ìÇÔ¼ö¸¦ »ç¿ëÇÏµÇ, Æ¯Á¤ Ä®·³À» ´ë»óÀ¸·Î Àû¿ëÇÒÁö¸¦ ±â¼úÇÒ ¶§ »ç¿ë
--- Á÷¿øÀÇ ±Þ¿©ÀÇ ÇÕÀ» ÃßÃâÇÏ´Â Äõ¸®¹®À» ±â¼úÇÏ½Ã¿À.
+-- group by ì ˆ
+-- íŠ¹ì • ì¹¼ëŸ¼ì„ ê¸°ì¤€ìœ¼ë¡œ ê·¸ë£¹í™” í•˜ì—¬ í•´ë‹¹ ê·¸ë£¹ì— ì¡´ìž¬í•˜ëŠ” ë ˆì½”ë“œë¥¼ ëŒ€ìƒí•˜ëŠ” ì—°ì‚°ìˆ˜í–‰
+-- ê·¸ë£¹í•¨ìˆ˜ë¥¼ ì‚¬ìš©í•˜ë˜, íŠ¹ì • ì¹¼ëŸ¼ì„ ëŒ€ìƒìœ¼ë¡œ ì ìš©í• ì§€ë¥¼ ê¸°ìˆ í•  ë•Œ ì‚¬ìš©
+-- ì§ì›ì˜ ê¸‰ì—¬ì˜ í•©ì„ ì¶”ì¶œí•˜ëŠ” ì¿¼ë¦¬ë¬¸ì„ ê¸°ìˆ í•˜ì‹œì˜¤.
 select sum(sal) from emp;
--- Á÷¿øÀÇ ±Þ¿©ÀÇ ÇÕÀ» Ãâ·ÂÇÏµÇ °¢ ºÎ¼­º° Á÷¿ø ±Þ¿©ÀÇ ÇÕÀÌ Ãâ·ÂµÇµµ·Ï ±â¼ú ÇÏ½Ã¿À.
+-- ì§ì›ì˜ ê¸‰ì—¬ì˜ í•©ì„ ì¶œë ¥í•˜ë˜ ê° ë¶€ì„œë³„ ì§ì› ê¸‰ì—¬ì˜ í•©ì´ ì¶œë ¥ë˜ë„ë¡ ê¸°ìˆ  í•˜ì‹œì˜¤.
 
 select deptno, sum(sal)
 from emp
 group by deptno;
 
--- ¼Ò¼Ó ºÎ¼­º° ±Þ¿©ÀÇ ÃÑÇÕ°ú Æò±Õ±Þ¿©¸¦ ÃßÃâÇÏ´Â Äõ¸®¸¦ ±â¼úÇÏ½Ã¿À.
--- ´Ü ºÎ¼­¹øÈ£, ÃÑ±Þ¿©, Æò±Õ±Þ¿© ¶ó´Â ÄÃ·³¸íÀ» Ç¥½ÃÇÏ½Ã¿À.
-select deptno "ºÎ¼­¹øÈ£", sum(sal) "ÃÑ±Þ¿©", round(avg(sal), 2) "Æò±Õ±Þ¿©"
+-- ì†Œì† ë¶€ì„œë³„ ê¸‰ì—¬ì˜ ì´í•©ê³¼ í‰ê· ê¸‰ì—¬ë¥¼ ì¶”ì¶œí•˜ëŠ” ì¿¼ë¦¬ë¥¼ ê¸°ìˆ í•˜ì‹œì˜¤.
+-- ë‹¨ ë¶€ì„œë²ˆí˜¸, ì´ê¸‰ì—¬, í‰ê· ê¸‰ì—¬ ë¼ëŠ” ì»¬ëŸ¼ëª…ì„ í‘œì‹œí•˜ì‹œì˜¤.
+select deptno "ë¶€ì„œë²ˆí˜¸", sum(sal) "ì´ê¸‰ì—¬", round(avg(sal), 2) "í‰ê· ê¸‰ì—¬"
 from emp
 group by deptno
 order by deptno;
 
--- ºÎ¼­º° »ç¿ø ¼ö¿Í Ä¿¹Ì¼ÇÀ» ¹Þ´Â »ç¶÷ÀÇ ¼ö¸¦ ÃßÃâÇÏ´Â Äõ¸®¹®À» ±â¼úÇÏ½Ã¿À.
-select deptno, count(*) "ºÎ¼­º° »ç¿ø ¼ö", count(comm)
+-- ë¶€ì„œë³„ ì‚¬ì› ìˆ˜ì™€ ì»¤ë¯¸ì…˜ì„ ë°›ëŠ” ì‚¬ëžŒì˜ ìˆ˜ë¥¼ ì¶”ì¶œí•˜ëŠ” ì¿¼ë¦¬ë¬¸ì„ ê¸°ìˆ í•˜ì‹œì˜¤.
+select deptno, count(*) "ë¶€ì„œë³„ ì‚¬ì› ìˆ˜", count(comm)
 from emp
 group by deptno
 order by deptno;
 
--- having Àý: group by Àý¿¡ ÀÇÇØ »ý¼ºµÈ °á°ú °ª¿¡ ¿øÇÏ´Â Á¶°Ç½ÄÀ» ´ã´Â Àý
--- Á¶°ÇÀý: whereÀý°ú havingÀý
--- ºÎ¼­º° Æò±Õ ±Þ¿©¸¦ Ãâ·ÂÇÏ´Â Äõ¸®¹®À» ±â¼úÇÏ½Ã¿À.
-select deptno "ºÎ¼­ ¹øÈ£", round(avg(sal),2) "ºÎ¼­º° ±Þ¿©"
+-- having ì ˆ: group by ì ˆì— ì˜í•´ ìƒì„±ëœ ê²°ê³¼ ê°’ì— ì›í•˜ëŠ” ì¡°ê±´ì‹ì„ ë‹´ëŠ” ì ˆ
+-- ì¡°ê±´ì ˆ: whereì ˆê³¼ havingì ˆ
+-- ë¶€ì„œë³„ í‰ê·  ê¸‰ì—¬ë¥¼ ì¶œë ¥í•˜ëŠ” ì¿¼ë¦¬ë¬¸ì„ ê¸°ìˆ í•˜ì‹œì˜¤.
+select deptno "ë¶€ì„œ ë²ˆí˜¸", round(avg(sal),2) "ë¶€ì„œë³„ ê¸‰ì—¬"
 from emp
 group by deptno
 order by deptno;
 
--- ºÎ¼­º° Æò±Õ±Þ¿©°¡ 2000ÀÌ ³Ñ´Â ºÎ¼­¿Í Æò±Õ±Þ¿©¸¦ Ãâ·ÂÇÏ´Â Äõ¸®¹®À» ±â¼úÇÏ½Ã¿À,
-select deptno "ºÎ¼­ ¹øÈ£", round(avg(sal),2) "ºÎ¼­º° ±Þ¿©"
+-- ë¶€ì„œë³„ í‰ê· ê¸‰ì—¬ê°€ 2000ì´ ë„˜ëŠ” ë¶€ì„œì™€ í‰ê· ê¸‰ì—¬ë¥¼ ì¶œë ¥í•˜ëŠ” ì¿¼ë¦¬ë¬¸ì„ ê¸°ìˆ í•˜ì‹œì˜¤,
+select deptno "ë¶€ì„œ ë²ˆí˜¸", round(avg(sal),2) "ë¶€ì„œë³„ ê¸‰ì—¬"
 from emp
 group by deptno
 having avg(sal) >= 2000
 order by deptno;
 
--- group by¿¡ ,¸¦ ³Ö¾î¼­ Ãß°¡·Î ±×·ìÁöÀ» ¼ö ÀÖ´Ù.
--- ºÎ¼­º° Á÷±Þ´ÜÀ§ ±Þ¿©ÀÇ Æò±ÕÀ» ÃßÃâÇÏ´Â Äõ¸®¹®À» ±â¼úÇÏ½Ã¿À.
+-- group byì— ,ë¥¼ ë„£ì–´ì„œ ì¶”ê°€ë¡œ ê·¸ë£¹ì§€ì„ ìˆ˜ ìžˆë‹¤.
+-- ë¶€ì„œë³„ ì§ê¸‰ë‹¨ìœ„ ê¸‰ì—¬ì˜ í‰ê· ì„ ì¶”ì¶œí•˜ëŠ” ì¿¼ë¦¬ë¬¸ì„ ê¸°ìˆ í•˜ì‹œì˜¤.
 select deptno, job, round(avg(sal), 2)
 from emp
 group by deptno, job
@@ -158,8 +158,8 @@ having avg(sal) >= 2000
 order by deptno, job;
 
 
--- Á¶ÀÎ(join): ÇÏ³ª ÀÌ»óÀÇ Å×ÀÌºíÀ» ¿¬°áÇÏ¿© ¿øÇÏ´Â Á¶°ÇÀ» ¸¸Á·ÇÏ´Â ÀÚ·á¸¦ ÃßÃâÇÏ´Â ±â´É.
--- Á÷¿øÀÌ¸§, ºÎ¼­¹øÈ£, ºÎ¼­¸íÀ» ÃßÃâÇÏ´Â Äõ¸®¹®À» ±â¼úÇÏ½Ã¿À.
+-- ì¡°ì¸(join): í•˜ë‚˜ ì´ìƒì˜ í…Œì´ë¸”ì„ ì—°ê²°í•˜ì—¬ ì›í•˜ëŠ” ì¡°ê±´ì„ ë§Œì¡±í•˜ëŠ” ìžë£Œë¥¼ ì¶”ì¶œí•˜ëŠ” ê¸°ëŠ¥.
+-- ì§ì›ì´ë¦„, ë¶€ì„œë²ˆí˜¸, ë¶€ì„œëª…ì„ ì¶”ì¶œí•˜ëŠ” ì¿¼ë¦¬ë¬¸ì„ ê¸°ìˆ í•˜ì‹œì˜¤.
 select * from emp;
 select * from dept;
 
@@ -167,19 +167,19 @@ select ename, emp.deptno, dname
 from emp, dept 
 where emp.deptno = dept.deptno;
 
--- cartesian product: Ä«Æ¼¼Ç °ö
--- µÎ °³ ÀÌ»óÀÇ Å×ÀÌºí¿¡ Á¸ÀçÇÏ´Â ¸ðµç µ¥ÀÌÅÍ¸¦ °Ë»ö °á°ú·Î °®´Â´Ù.
--- µÎ °³ ÀÌ»óÀÇ Å×ÀÌºí¿¡ °øÅëµÈ ÄÃ·³ÀÌ Á¸ÀçÇÏÁö ¾ÊÀ» °æ¿ì ¾´´Ù.
+-- cartesian product: ì¹´í‹°ì…˜ ê³±
+-- ë‘ ê°œ ì´ìƒì˜ í…Œì´ë¸”ì— ì¡´ìž¬í•˜ëŠ” ëª¨ë“  ë°ì´í„°ë¥¼ ê²€ìƒ‰ ê²°ê³¼ë¡œ ê°–ëŠ”ë‹¤.
+-- ë‘ ê°œ ì´ìƒì˜ í…Œì´ë¸”ì— ê³µí†µëœ ì»¬ëŸ¼ì´ ì¡´ìž¬í•˜ì§€ ì•Šì„ ê²½ìš° ì“´ë‹¤.
 select *
 from emp, dept;
 
--- equal join: °øÅëÀÇ ÄÃ·³À» ´ë»óÀ¸·Î Å×ÀÌºíÀ» ¿¬°áÇÏ´Â ±â´É
--- »ç¿øÁ¤º¸¸¦ Ãâ·ÂÇÏµÇ, ÇØ´ç »ç¿øÀÇ ºÎ¼­¿¡ ´ëÇÑ »ó¼¼ Á¤º¸°¡ ÇÔ²² Ãâ·Â µÇµµ·Ï ±¸Çö
+-- equal join: ê³µí†µì˜ ì»¬ëŸ¼ì„ ëŒ€ìƒìœ¼ë¡œ í…Œì´ë¸”ì„ ì—°ê²°í•˜ëŠ” ê¸°ëŠ¥
+-- ì‚¬ì›ì •ë³´ë¥¼ ì¶œë ¥í•˜ë˜, í•´ë‹¹ ì‚¬ì›ì˜ ë¶€ì„œì— ëŒ€í•œ ìƒì„¸ ì •ë³´ê°€ í•¨ê»˜ ì¶œë ¥ ë˜ë„ë¡ êµ¬í˜„
 select empno, ename, e.deptno, dname, loc
 from emp e, dept d
 where e.deptno = d.deptno;
 
--- ÀÌ¸§ÀÌ SCOTTÀÎ »ç¿øÀÇ ºÎ¼­¸íÀ» Ã£¾Æ ÀÌ¸§°ú ºÎ¼­¸íÀÌ Ãâ·ÂµÇµµ·Ï Äõ¸®¹®À» ±â¼úÇÏ½Ã¿À.
+-- ì´ë¦„ì´ SCOTTì¸ ì‚¬ì›ì˜ ë¶€ì„œëª…ì„ ì°¾ì•„ ì´ë¦„ê³¼ ë¶€ì„œëª…ì´ ì¶œë ¥ë˜ë„ë¡ ì¿¼ë¦¬ë¬¸ì„ ê¸°ìˆ í•˜ì‹œì˜¤.
 
 select ename, e.deptno, dname
 from emp e, dept d
@@ -195,7 +195,7 @@ select dname
 from dept
 where deptno = '20';
 
--- ¼­ºêÄõ¸®: Äõ¸® ¾È¿¡ ¶Ç ´Ù¸¥ Äõ¸®¸¦ ´ã¾Æ¼­ Ç¥ÇöÇÏ´Â °Í
+-- ì„œë¸Œì¿¼ë¦¬: ì¿¼ë¦¬ ì•ˆì— ë˜ ë‹¤ë¥¸ ì¿¼ë¦¬ë¥¼ ë‹´ì•„ì„œ í‘œí˜„í•˜ëŠ” ê²ƒ
 select dname
 from dept
 where deptno = (select deptno
@@ -203,7 +203,7 @@ from emp
 where ename='SCOTT');
 
 
--- ÀÌ·¸°Ô ÇÏ¸é ¿À·ù³² // ¿À·ù´Â ¾Æ´Ï°Ô ¼öÁ¤ Çß´Âµ¥ °á°ú°ªÀÌ ´Ù¸§
+-- ì´ë ‡ê²Œ í•˜ë©´ ì˜¤ë¥˜ë‚¨ // ì˜¤ë¥˜ëŠ” ì•„ë‹ˆê²Œ ìˆ˜ì • í–ˆëŠ”ë° ê²°ê³¼ê°’ì´ ë‹¤ë¦„
 select ename, dname
 from emp e, dept d
 where d.deptno = (select e.deptno
@@ -222,29 +222,29 @@ select ename, dname
 from emp e, dept d
 where ename = 'SCOTT' and e.deptno = d.deptno;
 
--- ¸¸¾à À§ ¹®ÀåÀ» ¼­ºêÄõ¸®¸¦ ÀÌ¿ëÇØ ¿À·ù ¾øÀÌ Ç¥Çö ÇÏ·Á¸é
+-- ë§Œì•½ ìœ„ ë¬¸ìž¥ì„ ì„œë¸Œì¿¼ë¦¬ë¥¼ ì´ìš©í•´ ì˜¤ë¥˜ ì—†ì´ í‘œí˜„ í•˜ë ¤ë©´
 select ename, dname
 from emp e, dept d
 where e.deptno = d.deptno and ename = 'SCOTT';
 
--- ±Þ¿©°¡ 2500 ÀÌÇÏÀÌ°í, »ç¿ø ¹øÈ£°¡ 9999 ÀÌÇÏÀÎ »ç¿øÀÇ Á¤º¸¸¦ Ãâ·ÂÇÏ½Ã¿À.
--- ÀÌÇÏ Ã³·³ ÇÏ¸é 36°³°¡ Ãâ·ÂµÇ¼­ Á¦´ë·Î µÈ°Ô ¾Æ´Ï´Ù.
+-- ê¸‰ì—¬ê°€ 2500 ì´í•˜ì´ê³ , ì‚¬ì› ë²ˆí˜¸ê°€ 9999 ì´í•˜ì¸ ì‚¬ì›ì˜ ì •ë³´ë¥¼ ì¶œë ¥í•˜ì‹œì˜¤.
+-- ì´í•˜ ì²˜ëŸ¼ í•˜ë©´ 36ê°œê°€ ì¶œë ¥ë˜ì„œ ì œëŒ€ë¡œ ëœê²Œ ì•„ë‹ˆë‹¤.
 select empno, ename, sal, e.deptno, dname, loc
 from emp e, dept d
 where sal <= 2500 and empno <= 9999;
 
--- ÀÌÇÏÃ³·³ e.deptno¿Í d.deptno°¡ ÀÏÄ¡ÇÏ´Â °ÍÀ» ¸í½ÃÇØÁà¾ß ÇÔ
+-- ì´í•˜ì²˜ëŸ¼ e.deptnoì™€ d.deptnoê°€ ì¼ì¹˜í•˜ëŠ” ê²ƒì„ ëª…ì‹œí•´ì¤˜ì•¼ í•¨
 select empno, ename, sal, e.deptno, dname, loc
 from emp e, dept d
 where sal <= 2500 and empno <= 9999 and e.deptno = d.deptno;
 
--- non-equi join: µ¿ÀÏ ÄÃ·³ ¾øÀÌ ´Ù¸¥ Á¶°Ç(¹üÀ§)À» »ç¿ëÇÏ¿© Á¶ÀÎ ÇÒ ¶§ »ç¿ëÇÏ´Â Á¶ÀÎ ±â¹ý
+-- non-equi join: ë™ì¼ ì»¬ëŸ¼ ì—†ì´ ë‹¤ë¥¸ ì¡°ê±´(ë²”ìœ„)ì„ ì‚¬ìš©í•˜ì—¬ ì¡°ì¸ í•  ë•Œ ì‚¬ìš©í•˜ëŠ” ì¡°ì¸ ê¸°ë²•
 select * from tab;
 select * from salgrade;
--- 700 ~ 1200ÀÇ ¿ù±ÞÀ» ¹Þ´Â »ç¶÷Àº 1µî±Þ, 1201 ~ 1400ÀÇ ¿ù±ÞÀº 2µî±Þ ...
+-- 700 ~ 1200ì˜ ì›”ê¸‰ì„ ë°›ëŠ” ì‚¬ëžŒì€ 1ë“±ê¸‰, 1201 ~ 1400ì˜ ì›”ê¸‰ì€ 2ë“±ê¸‰ ...
 select * from emp;
--- KING Àº 5000ÀÇ ¿ù±ÞÀ» ¹Þ´Âµ¥ salgradeÀÇ 5µî±ÞÀº 3001 ~ 9999ÀÇ ¿ù±ÞÀ» ¹ÞÀ» °æ¿ìÀÌ´Ù.
--- ÀÌ ¶§ KINGÀº ¿ÏÀü µ¿ÀÏÇÑ °ªÀº ¾øÁö¸¸ 5µî±Þ ¹üÀ§¿¡ ¼ÓÇÏ±â¿¡ non-equi joinÀ» »ç¿ëÇÑ´Ù.
+-- KING ì€ 5000ì˜ ì›”ê¸‰ì„ ë°›ëŠ”ë° salgradeì˜ 5ë“±ê¸‰ì€ 3001 ~ 9999ì˜ ì›”ê¸‰ì„ ë°›ì„ ê²½ìš°ì´ë‹¤.
+-- ì´ ë•Œ KINGì€ ì™„ì „ ë™ì¼í•œ ê°’ì€ ì—†ì§€ë§Œ 5ë“±ê¸‰ ë²”ìœ„ì— ì†í•˜ê¸°ì— non-equi joinì„ ì‚¬ìš©í•œë‹¤.
 select ename, sal, grade
 from emp, salgrade
 where sal between losal and hisal;
@@ -258,57 +258,57 @@ from emp e, dept d, salgrade
 where sal between losal and hisal and e.deptno = d.deptno
 order by grade, sal, deptno;
 
--- self-join: ÀÚ±â ÀÚ½Å°ú Á¶ÀÎÀ» ÇÏ´Â ±â¹ý
--- ÀÏ¹ÝÀûÀ¸·Î Á¶ÀÎÀº ¿©·¯°³ÀÇ Å×ÀÌºíÀ» ¿¬°áÇÏ´Â ±â¹ýÀÌÁö¸¸ ÇÏ³ªÀÇ Å×ÀÌºí ¾È¿¡¼­
--- Á¶ÀÎÀ» ÇØ¾ß Á¤º¸¸¦ ¾ò¾î³»´Â °æ¿ì¿¡ »ç¿ëÇÑ´Ù.
--- Á÷¿ø Å×ÀÌºíÀ» ÀÌ¿ë ÇÏ¿© ÇØ´ç Á÷¿øÀÇ »ó»çÀÇ ÀÌ¸§À» ÃßÃâÇÏ½Ã¿À.
+-- self-join: ìžê¸° ìžì‹ ê³¼ ì¡°ì¸ì„ í•˜ëŠ” ê¸°ë²•
+-- ì¼ë°˜ì ìœ¼ë¡œ ì¡°ì¸ì€ ì—¬ëŸ¬ê°œì˜ í…Œì´ë¸”ì„ ì—°ê²°í•˜ëŠ” ê¸°ë²•ì´ì§€ë§Œ í•˜ë‚˜ì˜ í…Œì´ë¸” ì•ˆì—ì„œ
+-- ì¡°ì¸ì„ í•´ì•¼ ì •ë³´ë¥¼ ì–»ì–´ë‚´ëŠ” ê²½ìš°ì— ì‚¬ìš©í•œë‹¤.
+-- ì§ì› í…Œì´ë¸”ì„ ì´ìš© í•˜ì—¬ í•´ë‹¹ ì§ì›ì˜ ìƒì‚¬ì˜ ì´ë¦„ì„ ì¶”ì¶œí•˜ì‹œì˜¤.
 select * from emp;
 
 select e.ename, m.ename
 from emp e, emp m
 where e.mgr = m.empno;
 
--- outer join: ¿ÜºÎÁ¶ÀÎ
+-- outer join: ì™¸ë¶€ì¡°ì¸
 -- Left outer join, Right outer join
--- Á¶ÀÎ Á¶°Ç¿¡ ¸ÂÁö ¾Ê´Â Çàµµ ³ªÅ¸³»´Â Á¶ÀÎ ±â¹ý
--- (+)¸¦ ¾²Áö ¾ÊÀ¸¸é 13°³ÀÇ Ãâ·Â°á°ú(KING Á¦¿Ü)°¡ ³ª¿À´Âµ¥ ¾²¸é Æ÷ÇÔ 14°³°¡ ³ª¿Â´Ù.
--- (+)¸¦ ¾îµð¿¡ ºÙÀÌ´ÂÁö¿¡ µû¶ó °á°ú°ªÀÌ ´Þ¶óÁú ¼ö ÀÖ´Ù.
--- ¿©±â¼­ (+)¸¦ ¿À¸¥ÂÊ¿¡ ½èÁö¸¸ ¿ÞÂÊ¿¡ ¾È³ª¿À´ø °ªµµ ´Ù ³ª¿À°Ô Çß±â¶§¹®¿¡ Left outer joinÀÌ´Ù.
--- ¹Ý´ë·Î (+)¸¦ ¿ÞÂÊ¿¡ ¾²¸é ¿À¸¥ÂÊ¿¡ ¾È³ª¿À´ø °á°ú °ªÀÌ ´Ù ³ª¿À°Ô ÇÏ´Â °ÍÀÌ±âÀÌ Right outer joinÀÌ´Ù.
+-- ì¡°ì¸ ì¡°ê±´ì— ë§žì§€ ì•ŠëŠ” í–‰ë„ ë‚˜íƒ€ë‚´ëŠ” ì¡°ì¸ ê¸°ë²•
+-- (+)ë¥¼ ì“°ì§€ ì•Šìœ¼ë©´ 13ê°œì˜ ì¶œë ¥ê²°ê³¼(KING ì œì™¸)ê°€ ë‚˜ì˜¤ëŠ”ë° ì“°ë©´ í¬í•¨ 14ê°œê°€ ë‚˜ì˜¨ë‹¤.
+-- (+)ë¥¼ ì–´ë””ì— ë¶™ì´ëŠ”ì§€ì— ë”°ë¼ ê²°ê³¼ê°’ì´ ë‹¬ë¼ì§ˆ ìˆ˜ ìžˆë‹¤.
+-- ì—¬ê¸°ì„œ (+)ë¥¼ ì˜¤ë¥¸ìª½ì— ì¼ì§€ë§Œ ì™¼ìª½ì— ì•ˆë‚˜ì˜¤ë˜ ê°’ë„ ë‹¤ ë‚˜ì˜¤ê²Œ í–ˆê¸°ë•Œë¬¸ì— Left outer joinì´ë‹¤.
+-- ë°˜ëŒ€ë¡œ (+)ë¥¼ ì™¼ìª½ì— ì“°ë©´ ì˜¤ë¥¸ìª½ì— ì•ˆë‚˜ì˜¤ë˜ ê²°ê³¼ ê°’ì´ ë‹¤ ë‚˜ì˜¤ê²Œ í•˜ëŠ” ê²ƒì´ê¸°ì´ Right outer joinì´ë‹¤.
 select e.ename, m.ename
 from emp e, emp m
 where e.mgr = m.empno(+);
 
--- ¼­ºêÄõ¸®
--- ¼­ºêÄõ¸®´Â Ç×»ó ¿À¸¥ÂÊ¿¡ ¿Â´Ù.
--- ¼­ºêÄõ¸®´Â °ýÈ£·Î ¹­¿© ÀÖ¾î¾ß ÇÑ´Ù.
+-- ì„œë¸Œì¿¼ë¦¬
+-- ì„œë¸Œì¿¼ë¦¬ëŠ” í•­ìƒ ì˜¤ë¥¸ìª½ì— ì˜¨ë‹¤.
+-- ì„œë¸Œì¿¼ë¦¬ëŠ” ê´„í˜¸ë¡œ ë¬¶ì—¬ ìžˆì–´ì•¼ í•œë‹¤.
 select deptno from emp where ename = 'SCOTT';
 select dname from dept where deptno = 20;
 select dname from dept where deptno = (select deptno from emp where ename = 'SCOTT');
 
--- ´ÜÀÏÇà ¼­ºê Äõ¸®: ¼öÇà °á°ú°¡ ¿ÀÁ÷ ÇÏ³ªÀÇ ·¹ÄÚµå(Çà)·Î¸¸ ¹ÝÈ¯ÇÏ´Â °Í
--- ´ÜÀÏÇà ºñ±³ ¿¬»êÀÚ: =(°°´Ù), <>(°°Áö ¾Ê´Ù), >, >=, <, <=, etc...
--- »ç¿øµéÀÇ Æò±Õ ±Þ¿© º¸´Ù ´õ ¸¹Àº ±Þ¿©¸¦ ¹Þ´Â »ç¿øÀ» ÃßÃâÇÏ½Ã¿À
--- select ename, sal from emp where sal > avg(sal); ·Î ¾²¸é ¿À·ù(±×·ì¹ÙÀÌ ÇÔ¼öÀÌ±â ¶§¹®¿¡
--- ÀÌÇÏÃ³·³ ½áÁà¾ß ÇÑ´Ù.)
+-- ë‹¨ì¼í–‰ ì„œë¸Œ ì¿¼ë¦¬: ìˆ˜í–‰ ê²°ê³¼ê°€ ì˜¤ì§ í•˜ë‚˜ì˜ ë ˆì½”ë“œ(í–‰)ë¡œë§Œ ë°˜í™˜í•˜ëŠ” ê²ƒ
+-- ë‹¨ì¼í–‰ ë¹„êµ ì—°ì‚°ìž: =(ê°™ë‹¤), <>(ê°™ì§€ ì•Šë‹¤), >, >=, <, <=, etc...
+-- ì‚¬ì›ë“¤ì˜ í‰ê·  ê¸‰ì—¬ ë³´ë‹¤ ë” ë§Žì€ ê¸‰ì—¬ë¥¼ ë°›ëŠ” ì‚¬ì›ì„ ì¶”ì¶œí•˜ì‹œì˜¤
+-- select ename, sal from emp where sal > avg(sal); ë¡œ ì“°ë©´ ì˜¤ë¥˜(ê·¸ë£¹ë°”ì´ í•¨ìˆ˜ì´ê¸° ë•Œë¬¸ì—
+-- ì´í•˜ì²˜ëŸ¼ ì¨ì¤˜ì•¼ í•œë‹¤.)
 
 select ename, sal
 from emp
 where sal > (select avg(sal) from emp);
 
--- SCOTTÀÇ ±Þ¿©¿Í µ¿ÀÏÇÏ°Å³ª ´õ ¸¹ÀÌ ¹Þ´Â »ç¿øÀÇ ÀÌ¸§°ú ±Þ¿©¸¦ ÃßÃâÇÏ½Ã¿À.
+-- SCOTTì˜ ê¸‰ì—¬ì™€ ë™ì¼í•˜ê±°ë‚˜ ë” ë§Žì´ ë°›ëŠ” ì‚¬ì›ì˜ ì´ë¦„ê³¼ ê¸‰ì—¬ë¥¼ ì¶”ì¶œí•˜ì‹œì˜¤.
 select ename, sal
 from emp
 where sal >= (select sal from emp where ename = 'SCOTT');
 
--- ´ÙÁßÇà ¼­ºê Äõ¸®: ¼­ºêÄõ¸®ÀÇ °á°ú°¡ µÎ °³ ÀÌ»óÀÎ °Í
--- ´ÙÁßÇà ¿¬»êÀÚ: in, any(¾î´À °Í ÇÏ³ª¶óµµ), some, all
--- in: ¸ÞÀÎ Äõ¸®ÀÇ ºñ±³ Á¶°ÇÀÌ ¼­ºê Äõ¸®ÀÇ °á°ú Áß¿¡¼­ ÇÏ³ª¶óµµ ÀÏÄ¡ÇÏ¸é Âü
--- ±Þ¿©°¡ 3000 ÀÌ»ó ¹Þ´Â Á÷¿øÀÇ ºÎ¼­¿Í µ¿ÀÏÇÑ ºÎ¼­¿¡ ±Ù¹«ÇÏ´Â Á÷¿øÀÇ Á¤º¸¸¦ ÃßÃâÇÏ½Ã¿À
+-- ë‹¤ì¤‘í–‰ ì„œë¸Œ ì¿¼ë¦¬: ì„œë¸Œì¿¼ë¦¬ì˜ ê²°ê³¼ê°€ ë‘ ê°œ ì´ìƒì¸ ê²ƒ
+-- ë‹¤ì¤‘í–‰ ì—°ì‚°ìž: in, any(ì–´ëŠ ê²ƒ í•˜ë‚˜ë¼ë„), some, all
+-- in: ë©”ì¸ ì¿¼ë¦¬ì˜ ë¹„êµ ì¡°ê±´ì´ ì„œë¸Œ ì¿¼ë¦¬ì˜ ê²°ê³¼ ì¤‘ì—ì„œ í•˜ë‚˜ë¼ë„ ì¼ì¹˜í•˜ë©´ ì°¸
+-- ê¸‰ì—¬ê°€ 3000 ì´ìƒ ë°›ëŠ” ì§ì›ì˜ ë¶€ì„œì™€ ë™ì¼í•œ ë¶€ì„œì— ê·¼ë¬´í•˜ëŠ” ì§ì›ì˜ ì •ë³´ë¥¼ ì¶”ì¶œí•˜ì‹œì˜¤
 select ename, sal, deptno from emp where sal >= 3000;
 select distinct(deptno) from emp where sal  >= 3000;
 
--- ÀÌ·¸°Ô ¾²¸é ¼­ºê Äõ¸®ÀÇ °ªÀÌ ÇÏ³ª¿©¾ß µÊ  deptno°¡ 10, 20 2°³°¡ ¶°¼­ ¾ÈµÊ
+-- ì´ë ‡ê²Œ ì“°ë©´ ì„œë¸Œ ì¿¼ë¦¬ì˜ ê°’ì´ í•˜ë‚˜ì—¬ì•¼ ë¨  deptnoê°€ 10, 20 2ê°œê°€ ë– ì„œ ì•ˆë¨
 select ename, sal, deptno
 from emp
 where deptno = (select distinct(deptno) from emp where sal  >= 3000);
@@ -324,50 +324,50 @@ where deptno in(10, 20);
 select ename, sal, deptno
 from emp
 where deptno = 10 or deptno = 20;
--- ÀÌ»óÀÇ ¼¼ ½ÄÀº ¸ðµÎ °°Áö¸¸ °øÁ¤ÀÇ Â÷ÀÌ°¡ ÀÖ´Ù.
+-- ì´ìƒì˜ ì„¸ ì‹ì€ ëª¨ë‘ ê°™ì§€ë§Œ ê³µì •ì˜ ì°¨ì´ê°€ ìžˆë‹¤.
 
--- any, some: ¸ÞÀÎ Äõ¸®ÀÇ ºñ±³ Á¶°ÇÀÌ ¼­ºê Äõ¸®ÀÇ °á°ú¿Í ÇÏ³ª ÀÌ»ó ÀÏÄ¡ÇÏ¸é Âü
--- < any: Ã£Àº °ª¿¡ ´ëÇÏ¿© ÇÏ³ª¶óµµ Å©¸é Âü
--- > any: Ã£Àº °ª¿¡ ´ëÇÏ¿© ÇÏ³ª¶óµµ ÀÛÀ¸¸é Âü
--- ºÎ¼­ ¹øÈ£°¡ 30¹øÀÎ »ç¿øÀÇ ±Þ¿©Áß °¡Àå ÀÛÀº°ª(950) º¸´Ù ³ôÀº ±Þ¿©¸¦ ¹Þ´Â »ç¿øÀÇ Á¤º¸¸¦ ÃßÃâ
+-- any, some: ë©”ì¸ ì¿¼ë¦¬ì˜ ë¹„êµ ì¡°ê±´ì´ ì„œë¸Œ ì¿¼ë¦¬ì˜ ê²°ê³¼ì™€ í•˜ë‚˜ ì´ìƒ ì¼ì¹˜í•˜ë©´ ì°¸
+-- < any: ì°¾ì€ ê°’ì— ëŒ€í•˜ì—¬ í•˜ë‚˜ë¼ë„ í¬ë©´ ì°¸
+-- > any: ì°¾ì€ ê°’ì— ëŒ€í•˜ì—¬ í•˜ë‚˜ë¼ë„ ìž‘ìœ¼ë©´ ì°¸
+-- ë¶€ì„œ ë²ˆí˜¸ê°€ 30ë²ˆì¸ ì‚¬ì›ì˜ ê¸‰ì—¬ì¤‘ ê°€ìž¥ ìž‘ì€ê°’(950) ë³´ë‹¤ ë†’ì€ ê¸‰ì—¬ë¥¼ ë°›ëŠ” ì‚¬ì›ì˜ ì •ë³´ë¥¼ ì¶”ì¶œ
 select ename, sal from emp where deptno = 30;
 
 select ename, sal, deptno
 from emp
 where sal > any(select sal from emp where deptno = 30);
 
--- µÊ
+-- ë¨
 select ename, sal, deptno
 from emp
 where sal > (select min(sal) from emp where deptno = 30);
 
--- ¾ÈµÊ
+-- ì•ˆë¨
 select ename, sal, deptno
 from emp
 where sal > min(select sal from emp where deptno = 30);
 
--- all: ¸ÞÀÎ Äõ¸®ÀÇ ºñ±³ Á¶°ÇÀÌ ¼­ºê Äõ¸®ÀÇ °á°ú¿Í ¸ðµÎ ÀÏÄ¡ÇÏ¸é Âü
--- < all: ÃÖ¼Ú°ª ¹ÝÈ¯
--- > all: ÃÖ´ñ°ª ¹ÝÈ¯
--- ºÎ¼­¹øÈ£°¡ 30¹øÀÎ »ç¿øÀÇ ±Þ¿©Áß °¡Àå ¸¹ÀÌ ¹Þ´Â »ç¿ø º¸´Ù ´õ ³ôÀº ±Þ¿©¸¦ ¹Þ´Â »ç¿øÀ» ÃßÃâÇÏ½Ã¿À
+-- all: ë©”ì¸ ì¿¼ë¦¬ì˜ ë¹„êµ ì¡°ê±´ì´ ì„œë¸Œ ì¿¼ë¦¬ì˜ ê²°ê³¼ì™€ ëª¨ë‘ ì¼ì¹˜í•˜ë©´ ì°¸
+-- < all: ìµœì†Ÿê°’ ë°˜í™˜
+-- > all: ìµœëŒ“ê°’ ë°˜í™˜
+-- ë¶€ì„œë²ˆí˜¸ê°€ 30ë²ˆì¸ ì‚¬ì›ì˜ ê¸‰ì—¬ì¤‘ ê°€ìž¥ ë§Žì´ ë°›ëŠ” ì‚¬ì› ë³´ë‹¤ ë” ë†’ì€ ê¸‰ì—¬ë¥¼ ë°›ëŠ” ì‚¬ì›ì„ ì¶”ì¶œí•˜ì‹œì˜¤
 select sal from emp where deptno = 30;
 
 select ename, sal
 from emp
 where sal > all(select sal from emp where deptno = 30);
--- in°ú any´Â ¿©±â¼­ ÀÖ´Â °ªµé Áß ¾î´À ÇÏ³ª º¸´Ù¶óµµ Å©¸é ÀÌ¶ó´Â ÀÇ¹Ì°¡ µÇ¼­ ¾ÈµÊ
--- allÀº ¼­ºê Äõ¸®ÀÇ °ªµé Áß ¾î¶² °ª º¸´Ùµµ Å« °ªÀÌ¾î¾ß ÇÑ´Ù. Áï ÃÖ´ñ°ª
+-- inê³¼ anyëŠ” ì—¬ê¸°ì„œ ìžˆëŠ” ê°’ë“¤ ì¤‘ ì–´ëŠ í•˜ë‚˜ ë³´ë‹¤ë¼ë„ í¬ë©´ ì´ë¼ëŠ” ì˜ë¯¸ê°€ ë˜ì„œ ì•ˆë¨
+-- allì€ ì„œë¸Œ ì¿¼ë¦¬ì˜ ê°’ë“¤ ì¤‘ ì–´ë–¤ ê°’ ë³´ë‹¤ë„ í° ê°’ì´ì–´ì•¼ í•œë‹¤. ì¦‰ ìµœëŒ“ê°’
 
--- exists: ¸ÞÀÎ Äõ¸®ÀÇ ºñ±³ Á¶°ÇÀÌ ¼­ºêÄõ¸®ÀÇ °á°ú Áß¿¡ ¸¸Á·ÇÏ´Â °ªÀÌ ÇÏ³ª¶óµµ
--- Á¸ÀçÇÏ¸é Âü
--- in°úÀÇ Â÷ÀÌ??
--- in, any, some Àº °®°í ÀÖ´Â °ªÀ» ´ë»óÀ¸·Î ºñ±³, exitÀº Á¸ÀçÀÇ ¿©ºÎ±îÁö ºñ±³ÇÑ´Ù´Â Â÷ÀÌ°¡ ÀÖ´Ù.
--- ´ë¾ÈÀûÀÎ ÇØ°á??
--- ex) ¾î¶² »çÀÌÆ®¸¦ ¹æ¹®Çß´õ´Ï not found°¡ ¶ß´Â°Í°ú ÇØ´ç »çÀÌÆ®´Â Á¡°Ë ÁßÀÔ´Ï´Ù. ¶ó°í ¶ß´Â °ÍÀÇ Â÷ÀÌ?
--- µÑ´Ù Á¢¼ÓÀÌ ¾ÈµÇÁö¸¸ ±× »çÀÌÆ®°ª(Å×ÀÌºí)ÀÌ Á¸ÀçÇÏ´ÂÁö¸¦ Ã¼Å©ÇÑ´Ù.
--- À¯È¿¼º °Ë»ç ±ÔÄ¢
--- ex) 1,2,3ÇÐ³â¸¸ ÀÖ´Â ÇÐ±³¿¡ ´©°¡ ½Ç¼ö·Î 5¸¦ ÀÔ·ÂÇÏ¸é ¾ÈµÊ(À¯È¿¼º °Ë»ç ±ÔÄ¢ÀÌ ¾øÀ¸¸é 5·Î ÀÔ·ÂµÇ´Â ºÒ»ó»ç ¹ß»ý)
--- dept Å×ÀÌºí¿¡¼­ deptno°¡ 10, 20ÀÎ µ¥ÀÌÅÍ°¡ Á¸ÀçÇÑ´Ù¸é, empÅ×ÀÌºí¿¡¼­ ÇØ´ç ÄÃ·³À» ÃßÃâ
+-- exists: ë©”ì¸ ì¿¼ë¦¬ì˜ ë¹„êµ ì¡°ê±´ì´ ì„œë¸Œì¿¼ë¦¬ì˜ ê²°ê³¼ ì¤‘ì— ë§Œì¡±í•˜ëŠ” ê°’ì´ í•˜ë‚˜ë¼ë„
+-- ì¡´ìž¬í•˜ë©´ ì°¸
+-- inê³¼ì˜ ì°¨ì´??
+-- in, any, some ì€ ê°–ê³  ìžˆëŠ” ê°’ì„ ëŒ€ìƒìœ¼ë¡œ ë¹„êµ, exitì€ ì¡´ìž¬ì˜ ì—¬ë¶€ê¹Œì§€ ë¹„êµí•œë‹¤ëŠ” ì°¨ì´ê°€ ìžˆë‹¤.
+-- ëŒ€ì•ˆì ì¸ í•´ê²°??
+-- ex) ì–´ë–¤ ì‚¬ì´íŠ¸ë¥¼ ë°©ë¬¸í–ˆë”ë‹ˆ not foundê°€ ëœ¨ëŠ”ê²ƒê³¼ í•´ë‹¹ ì‚¬ì´íŠ¸ëŠ” ì ê²€ ì¤‘ìž…ë‹ˆë‹¤. ë¼ê³  ëœ¨ëŠ” ê²ƒì˜ ì°¨ì´?
+-- ë‘˜ë‹¤ ì ‘ì†ì´ ì•ˆë˜ì§€ë§Œ ê·¸ ì‚¬ì´íŠ¸ê°’(í…Œì´ë¸”)ì´ ì¡´ìž¬í•˜ëŠ”ì§€ë¥¼ ì²´í¬í•œë‹¤.
+-- ìœ íš¨ì„± ê²€ì‚¬ ê·œì¹™
+-- ex) 1,2,3í•™ë…„ë§Œ ìžˆëŠ” í•™êµì— ëˆ„ê°€ ì‹¤ìˆ˜ë¡œ 5ë¥¼ ìž…ë ¥í•˜ë©´ ì•ˆë¨(ìœ íš¨ì„± ê²€ì‚¬ ê·œì¹™ì´ ì—†ìœ¼ë©´ 5ë¡œ ìž…ë ¥ë˜ëŠ” ë¶ˆìƒì‚¬ ë°œìƒ)
+-- dept í…Œì´ë¸”ì—ì„œ deptnoê°€ 10, 20ì¸ ë°ì´í„°ê°€ ì¡´ìž¬í•œë‹¤ë©´, empí…Œì´ë¸”ì—ì„œ í•´ë‹¹ ì»¬ëŸ¼ì„ ì¶”ì¶œ
 select ename, deptno
 from emp
 where deptno = 10 or deptno = 20;
@@ -376,19 +376,19 @@ select ename, deptno
 from emp
 where deptno in(10, 20);
 
--- ÀÌ·¸°Ô ¾²¸é ºÎ¼­ ¹øÈ£°¡ 50ÀÌ ¾ø¾î¼­ °á°ú °ªÀÌ ¾øÀ½
+-- ì´ë ‡ê²Œ ì“°ë©´ ë¶€ì„œ ë²ˆí˜¸ê°€ 50ì´ ì—†ì–´ì„œ ê²°ê³¼ ê°’ì´ ì—†ìŒ
 select ename, deptno
 from emp
 where deptno = 50;
 
--- ±×·¡¼­ 50À» ¸ø¾²°Ô ÇÏ·Á¸é ÀÏ´Ü dept¿¡ 50ÀÌ ÀÖ´ÂÁö ¾ø´ÂÁö ¿©ºÎºÎÅÍ Ã¼Å©ÇÏ°Ô ÇÏ´Â°ÍÀÌ
--- existsÀÇ ¿ªÇÒÀÌ´Ù.
+-- ê·¸ëž˜ì„œ 50ì„ ëª»ì“°ê²Œ í•˜ë ¤ë©´ ì¼ë‹¨ deptì— 50ì´ ìžˆëŠ”ì§€ ì—†ëŠ”ì§€ ì—¬ë¶€ë¶€í„° ì²´í¬í•˜ê²Œ í•˜ëŠ”ê²ƒì´
+-- existsì˜ ì—­í• ì´ë‹¤.
 
 
 
--- enameÀÌ KINGÀÎ »ç¶÷°ú  JONESÀÎ »ç¶÷ÀÇ ¿ù±Þ Â÷ÀÌ¸¦ ±¸ÇÏ½Ã¿À.
--- ¼­ºê Äõ¸®¸¦ ¹è¿ö¾ß ÇÑ´Ù.
--- select Àý¿¡ ¾Æ·¡ Ã³·³ Á¶°ÇÀ» ¾²¸é ¾ÈµÊ
+-- enameì´ KINGì¸ ì‚¬ëžŒê³¼  JONESì¸ ì‚¬ëžŒì˜ ì›”ê¸‰ ì°¨ì´ë¥¼ êµ¬í•˜ì‹œì˜¤.
+-- ì„œë¸Œ ì¿¼ë¦¬ë¥¼ ë°°ì›Œì•¼ í•œë‹¤.
+-- select ì ˆì— ì•„ëž˜ ì²˜ëŸ¼ ì¡°ê±´ì„ ì“°ë©´ ì•ˆë¨
 select sal(ename = 'KING') - sal(ename = 'JONES')
 from emp;
 
@@ -398,8 +398,8 @@ where a = (select sal from emp where ename = 'KING'),
 b = (select sal from emp where ename = 'JONES');
 
 
--- a´Â 20 b´Â 10À» ÇÒ´çÇÏ°í a-b¸¦ °è»ê ÇÏ½Ã¿À?????
--- ¾ÈµÇ´Â°Ô ±âÁ¸ÀÇ °ªµéÀ» ²¨³»¿Í¼­ °è»êÇÏ´Â°Å¶ó ¾ÈµÊ
+-- aëŠ” 20 bëŠ” 10ì„ í• ë‹¹í•˜ê³  a-bë¥¼ ê³„ì‚° í•˜ì‹œì˜¤?????
+-- ì•ˆë˜ëŠ”ê²Œ ê¸°ì¡´ì˜ ê°’ë“¤ì„ êº¼ë‚´ì™€ì„œ ê³„ì‚°í•˜ëŠ”ê±°ë¼ ì•ˆë¨
 select 20 - 10 from dual;
 
 
@@ -408,12 +408,12 @@ from dual
 where a = 20, b= 10, c = a-b;
 
 
--- ÀÌ·¸°Ô ¾²¸é self joinÀ¸·Î °è»êÇÑ °Í
+-- ì´ë ‡ê²Œ ì“°ë©´ self joinìœ¼ë¡œ ê³„ì‚°í•œ ê²ƒ
 select k.sal - j.sal
 from emp k, emp j
 where k.ename = 'KING'and j.ename = 'JONES';
 
--- ¼­ºê Äõ¸®¸¦ ÀÌ¿ëÇØ¼­ °è»ê?
+-- ì„œë¸Œ ì¿¼ë¦¬ë¥¼ ì´ìš©í•´ì„œ ê³„ì‚°?
 
 select sal from emp where ename= 'KING';
 select sal from emp where ename= 'JONES';
@@ -428,8 +428,8 @@ from emp;
 
 
 
-/*-- (»çÀå°ú ¸Å´ÏÀúÀÇ ¿ù±Þ)ÀÇ Æò±Õ°ú (¼¼ÀÏÁî¸Ç°ú Á¡¿ø)ÀÇ ¿ù±ÞÀÇ Æò±ÕÀÇ Â÷¸¦ ±¸ÇÏ½Ã¿À
-ÀÌ ¿ª½Ã ¼­ºê Äõ¸®¸¦ ¹è¿ö¾ß ÇÑ´Ù.
+/*-- (ì‚¬ìž¥ê³¼ ë§¤ë‹ˆì €ì˜ ì›”ê¸‰)ì˜ í‰ê· ê³¼ (ì„¸ì¼ì¦ˆë§¨ê³¼ ì ì›)ì˜ ì›”ê¸‰ì˜ í‰ê· ì˜ ì°¨ë¥¼ êµ¬í•˜ì‹œì˜¤
+ì´ ì—­ì‹œ ì„œë¸Œ ì¿¼ë¦¬ë¥¼ ë°°ì›Œì•¼ í•œë‹¤.
 select avg(sal???) -avg(sal???)
 from emp;
 */
